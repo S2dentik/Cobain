@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		FFB231F41E66256A00BCF030 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB231F31E66256A00BCF030 /* main.swift */; };
+		FFB231FC1E669BDA00BCF030 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB231FB1E669BDA00BCF030 /* Token.swift */; };
+		FFB231FE1E669F6500BCF030 /* Lexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB231FD1E669F6500BCF030 /* Lexer.swift */; };
+		FFB232011E66A29300BCF030 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB232001E66A29300BCF030 /* StringExtensions.swift */; };
+		FFB232031E66A5F500BCF030 /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB232021E66A5F500BCF030 /* Stream.swift */; };
+		FFB3994B1F47A6DC00E62C79 /* CharacterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB3994A1F47A6DC00E62C79 /* CharacterExtensions.swift */; };
+		FFB3994D1F47AAB700E62C79 /* LexerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB3994C1F47AAB700E62C79 /* LexerError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +31,12 @@
 /* Begin PBXFileReference section */
 		FFB231F01E66256A00BCF030 /* Cobain */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Cobain; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFB231F31E66256A00BCF030 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		FFB231FB1E669BDA00BCF030 /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		FFB231FD1E669F6500BCF030 /* Lexer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lexer.swift; sourceTree = "<group>"; };
+		FFB232001E66A29300BCF030 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		FFB232021E66A5F500BCF030 /* Stream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stream.swift; sourceTree = "<group>"; };
+		FFB3994A1F47A6DC00E62C79 /* CharacterExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterExtensions.swift; sourceTree = "<group>"; };
+		FFB3994C1F47AAB700E62C79 /* LexerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LexerError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,9 +69,31 @@
 		FFB231F21E66256A00BCF030 /* Cobain */ = {
 			isa = PBXGroup;
 			children = (
+				FFB231FF1E66A28B00BCF030 /* Extensions */,
+				FFB231FA1E669B8300BCF030 /* Lexer */,
 				FFB231F31E66256A00BCF030 /* main.swift */,
 			);
 			path = Cobain;
+			sourceTree = "<group>";
+		};
+		FFB231FA1E669B8300BCF030 /* Lexer */ = {
+			isa = PBXGroup;
+			children = (
+				FFB231FB1E669BDA00BCF030 /* Token.swift */,
+				FFB231FD1E669F6500BCF030 /* Lexer.swift */,
+				FFB232021E66A5F500BCF030 /* Stream.swift */,
+				FFB3994C1F47AAB700E62C79 /* LexerError.swift */,
+			);
+			name = Lexer;
+			sourceTree = "<group>";
+		};
+		FFB231FF1E66A28B00BCF030 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FFB232001E66A29300BCF030 /* StringExtensions.swift */,
+				FFB3994A1F47A6DC00E62C79 /* CharacterExtensions.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -89,12 +123,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Alexandru Culeva";
 				TargetAttributes = {
 					FFB231EF1E66256A00BCF030 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = QE33WF5A23;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -121,7 +156,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFB232011E66A29300BCF030 /* StringExtensions.swift in Sources */,
 				FFB231F41E66256A00BCF030 /* main.swift in Sources */,
+				FFB231FC1E669BDA00BCF030 /* Token.swift in Sources */,
+				FFB231FE1E669F6500BCF030 /* Lexer.swift in Sources */,
+				FFB232031E66A5F500BCF030 /* Stream.swift in Sources */,
+				FFB3994B1F47A6DC00E62C79 /* CharacterExtensions.swift in Sources */,
+				FFB3994D1F47AAB700E62C79 /* LexerError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,7 +178,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -145,7 +188,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -185,7 +232,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -193,7 +242,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -213,6 +266,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Release;
 		};
@@ -221,7 +275,8 @@
 			buildSettings = {
 				DEVELOPMENT_TEAM = QE33WF5A23;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -230,7 +285,8 @@
 			buildSettings = {
 				DEVELOPMENT_TEAM = QE33WF5A23;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -253,6 +309,7 @@
 				FFB231F91E66256A00BCF030 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
