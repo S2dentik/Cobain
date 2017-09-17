@@ -8,29 +8,29 @@
 
 import Foundation
 
-class Stream {
+class Stream<T: Collection & SubsequenceInitializable> {
     
-    private var string: String
+    private var sequence: T
     
-    init(_ string: String) {
-        self.string = string
+    init(_ sequence: T) {
+        self.sequence = sequence
     }
     
     /// Reads first character of the stream and consumes it
-    func read() -> Character? {
-        guard let firstChar = string.first else { return nil }
-        string = string.droppingFirst
+    func read() -> T.Element? {
+        guard let firstChar = sequence.first else { return nil }
+        sequence = sequence.droppingFirst
         return firstChar
     }
     
     /// Reads first character of the stream without consuming it
-    func stalk() -> Character? {
-        return string.first
+    func stalk() -> T.Element? {
+        return sequence.first
     }
     
     /// Consumes first character of the stream and returns the remaining string
-    func consume() -> Stream {
-        string = string.droppingFirst
+    func consume() -> Stream<T> {
+        sequence = sequence.droppingFirst
         return self
     }
 }

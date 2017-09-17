@@ -7,13 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF86097A1F6DDB1B00A38D90 /* CharacterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8609731F6DDB0B00A38D90 /* CharacterExtensions.swift */; };
+		FF86097B1F6DDB1B00A38D90 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8609741F6DDB0B00A38D90 /* StringExtensions.swift */; };
+		FF86097C1F6DDB1B00A38D90 /* Lexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8609761F6DDB0B00A38D90 /* Lexer.swift */; };
+		FF86097D1F6DDB1B00A38D90 /* LexerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8609771F6DDB0B00A38D90 /* LexerError.swift */; };
+		FF86097E1F6DDB1B00A38D90 /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8609781F6DDB0B00A38D90 /* Stream.swift */; };
+		FF86097F1F6DDB1B00A38D90 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8609791F6DDB0B00A38D90 /* Token.swift */; };
+		FF8609821F6DDB4D00A38D90 /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8609811F6DDB4D00A38D90 /* Expression.swift */; };
+		FF8609841F6DDE1C00A38D90 /* SequenceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8609831F6DDE1C00A38D90 /* SequenceExtensions.swift */; };
 		FFB231F41E66256A00BCF030 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB231F31E66256A00BCF030 /* main.swift */; };
-		FFB231FC1E669BDA00BCF030 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB231FB1E669BDA00BCF030 /* Token.swift */; };
-		FFB231FE1E669F6500BCF030 /* Lexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB231FD1E669F6500BCF030 /* Lexer.swift */; };
-		FFB232011E66A29300BCF030 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB232001E66A29300BCF030 /* StringExtensions.swift */; };
-		FFB232031E66A5F500BCF030 /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB232021E66A5F500BCF030 /* Stream.swift */; };
-		FFB3994B1F47A6DC00E62C79 /* CharacterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB3994A1F47A6DC00E62C79 /* CharacterExtensions.swift */; };
-		FFB3994D1F47AAB700E62C79 /* LexerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB3994C1F47AAB700E62C79 /* LexerError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,14 +31,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		FF8609731F6DDB0B00A38D90 /* CharacterExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterExtensions.swift; sourceTree = "<group>"; };
+		FF8609741F6DDB0B00A38D90 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		FF8609761F6DDB0B00A38D90 /* Lexer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lexer.swift; sourceTree = "<group>"; };
+		FF8609771F6DDB0B00A38D90 /* LexerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LexerError.swift; sourceTree = "<group>"; };
+		FF8609781F6DDB0B00A38D90 /* Stream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stream.swift; sourceTree = "<group>"; };
+		FF8609791F6DDB0B00A38D90 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		FF8609811F6DDB4D00A38D90 /* Expression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expression.swift; sourceTree = "<group>"; };
+		FF8609831F6DDE1C00A38D90 /* SequenceExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceExtensions.swift; sourceTree = "<group>"; };
 		FFB231F01E66256A00BCF030 /* Cobain */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Cobain; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFB231F31E66256A00BCF030 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		FFB231FB1E669BDA00BCF030 /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
-		FFB231FD1E669F6500BCF030 /* Lexer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lexer.swift; sourceTree = "<group>"; };
-		FFB232001E66A29300BCF030 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
-		FFB232021E66A5F500BCF030 /* Stream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stream.swift; sourceTree = "<group>"; };
-		FFB3994A1F47A6DC00E62C79 /* CharacterExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterExtensions.swift; sourceTree = "<group>"; };
-		FFB3994C1F47AAB700E62C79 /* LexerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LexerError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +54,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FF8609721F6DDB0B00A38D90 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FF8609731F6DDB0B00A38D90 /* CharacterExtensions.swift */,
+				FF8609741F6DDB0B00A38D90 /* StringExtensions.swift */,
+				FF8609831F6DDE1C00A38D90 /* SequenceExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FF8609751F6DDB0B00A38D90 /* Lexer */ = {
+			isa = PBXGroup;
+			children = (
+				FF8609761F6DDB0B00A38D90 /* Lexer.swift */,
+				FF8609771F6DDB0B00A38D90 /* LexerError.swift */,
+				FF8609781F6DDB0B00A38D90 /* Stream.swift */,
+				FF8609791F6DDB0B00A38D90 /* Token.swift */,
+			);
+			path = Lexer;
+			sourceTree = "<group>";
+		};
+		FF8609801F6DDB2900A38D90 /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				FF8609811F6DDB4D00A38D90 /* Expression.swift */,
+			);
+			path = Parser;
+			sourceTree = "<group>";
+		};
 		FFB231E71E66256A00BCF030 = {
 			isa = PBXGroup;
 			children = (
@@ -69,31 +102,12 @@
 		FFB231F21E66256A00BCF030 /* Cobain */ = {
 			isa = PBXGroup;
 			children = (
-				FFB231FF1E66A28B00BCF030 /* Extensions */,
-				FFB231FA1E669B8300BCF030 /* Lexer */,
+				FF8609801F6DDB2900A38D90 /* Parser */,
+				FF8609721F6DDB0B00A38D90 /* Extensions */,
+				FF8609751F6DDB0B00A38D90 /* Lexer */,
 				FFB231F31E66256A00BCF030 /* main.swift */,
 			);
 			path = Cobain;
-			sourceTree = "<group>";
-		};
-		FFB231FA1E669B8300BCF030 /* Lexer */ = {
-			isa = PBXGroup;
-			children = (
-				FFB231FB1E669BDA00BCF030 /* Token.swift */,
-				FFB231FD1E669F6500BCF030 /* Lexer.swift */,
-				FFB232021E66A5F500BCF030 /* Stream.swift */,
-				FFB3994C1F47AAB700E62C79 /* LexerError.swift */,
-			);
-			name = Lexer;
-			sourceTree = "<group>";
-		};
-		FFB231FF1E66A28B00BCF030 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				FFB232001E66A29300BCF030 /* StringExtensions.swift */,
-				FFB3994A1F47A6DC00E62C79 /* CharacterExtensions.swift */,
-			);
-			name = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,13 +170,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FFB232011E66A29300BCF030 /* StringExtensions.swift in Sources */,
+				FF86097B1F6DDB1B00A38D90 /* StringExtensions.swift in Sources */,
+				FF8609841F6DDE1C00A38D90 /* SequenceExtensions.swift in Sources */,
+				FF86097F1F6DDB1B00A38D90 /* Token.swift in Sources */,
+				FF86097E1F6DDB1B00A38D90 /* Stream.swift in Sources */,
+				FF8609821F6DDB4D00A38D90 /* Expression.swift in Sources */,
 				FFB231F41E66256A00BCF030 /* main.swift in Sources */,
-				FFB231FC1E669BDA00BCF030 /* Token.swift in Sources */,
-				FFB231FE1E669F6500BCF030 /* Lexer.swift in Sources */,
-				FFB232031E66A5F500BCF030 /* Stream.swift in Sources */,
-				FFB3994B1F47A6DC00E62C79 /* CharacterExtensions.swift in Sources */,
-				FFB3994D1F47AAB700E62C79 /* LexerError.swift in Sources */,
+				FF86097C1F6DDB1B00A38D90 /* Lexer.swift in Sources */,
+				FF86097A1F6DDB1B00A38D90 /* CharacterExtensions.swift in Sources */,
+				FF86097D1F6DDB1B00A38D90 /* LexerError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,7 +291,7 @@
 			buildSettings = {
 				DEVELOPMENT_TEAM = QE33WF5A23;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -285,7 +301,7 @@
 			buildSettings = {
 				DEVELOPMENT_TEAM = QE33WF5A23;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;

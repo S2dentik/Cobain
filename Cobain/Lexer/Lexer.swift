@@ -10,7 +10,7 @@ import Foundation
 
 struct Lexer {
 
-    let stream: Stream
+    let stream: Stream<String>
 
     var tokens: [Token] {
         var t = [Token]()

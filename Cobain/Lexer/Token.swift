@@ -9,8 +9,8 @@
 import Foundation
 
 enum Token {
-    case motif
-    case extern
+    case motif // Function
+    case extern // External
     case identifier(String)
     case number(Double)
     case unknown(Character)
