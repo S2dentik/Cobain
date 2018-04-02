@@ -1,22 +1,22 @@
 extension Collection where Self: SubsequenceInitializable {
     var droppingFirst: Self {
-        return type(of: self).init(dropFirst())
+        return type(of: self).init(subsequence: dropFirst())
     }
 }
 
 protocol SubsequenceInitializable {
     associatedtype SubSequence
-    init(_ subsequence: SubSequence)
+    init(subsequence: SubSequence)
 }
 
 extension String: SubsequenceInitializable {
-    public init(_ subsequence: SubSequence) {
+    public init(subsequence: SubSequence) {
         self.init(subsequence)
     }
 }
 
 extension Array: SubsequenceInitializable {
-    public init(_ subsequence: SubSequence) {
+    public init(subsequence: SubSequence) {
         self.init(subsequence)
     }
 }
