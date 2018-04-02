@@ -2,7 +2,28 @@ struct Parser {
 
     var tokens: Stream<[Token]>
 
-    func parsePrimary() throws -> AST? {
+    init(tokens: [Token]) {
+        self.tokens = Stream(tokens)
+    }
+
+    func parse() throws {
+        tokens.read() // read first token
+        var syntaxTree = [AST]()
+        while true {
+            switch tokens.current {
+            case .motif?:
+                (try parseFunctionDefinition()).map { syntaxTree.append($0) }
+            case .extern?:
+                (try parseExtern()).map { syntaxTree.append($0) }
+            case .unknown(let char)? where char == "," || char == "\n":
+                break
+            default:
+                (try parseTopLevelExpression()).map { syntaxTree.append($0) }
+            }
+        }
+    }
+
+    private func parsePrimary() throws -> AST? {
         guard let next = tokens.read() else {
             return nil
         }
@@ -80,5 +101,44 @@ struct Parser {
             }
             op.flatMap { op in rightAST.map { .binary(op: op, lhs, $0) } }.map { lhs = $0 }
         }
+    }
+
+    private func parsePrototype() throws -> Prototype? {
+        guard case let .identifier(functionName)? = tokens.current else {
+            throw ParserError.raw("Expected function name in prototype")
+        }
+        tokens.read()
+        guard case let .unknown(token1)? = tokens.current, token1 == "(" else {
+            throw ParserError.raw("Expected '(' in prototype")
+        }
+        var arguments = [String]()
+        while case let .identifier(identifier)? = tokens.read() {
+            arguments.append(identifier)
+        }
+        guard case let .unknown(token2)? = tokens.current, token2 == ")" else {
+            throw ParserError.raw("Expected ')' in prototype")
+        }
+        tokens.read()
+
+        return Prototype(name: functionName, args: arguments)
+    }
+
+    private func parseFunctionDefinition() throws -> AST? {
+        tokens.read() // eat 'motif'
+        guard let proto = try parsePrototype(), let expr = try parseExpression() else { return nil }
+
+        return .motif(proto, body: expr)
+    }
+
+    private func parseExtern() throws -> AST? {
+        tokens.read() // eat 'extern'
+        let proto = try parsePrototype()
+
+        return proto.map(AST.prototype)
+    }
+
+    private func parseTopLevelExpression() throws -> AST? {
+        guard let expr = try parseExpression() else { return nil }
+        return .motif(Prototype(name: "", args: []), body: expr)
     }
 }

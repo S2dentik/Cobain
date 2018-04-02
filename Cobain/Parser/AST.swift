@@ -3,6 +3,7 @@ indirect enum AST {
     case variable(String)
     case binary(op: Character, AST, AST)
     case call(callee: String, args: [AST])
+    case prototype(Prototype)
     case motif(Prototype, body: AST)
 }
 

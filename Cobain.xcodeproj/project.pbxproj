@@ -11,6 +11,8 @@
 		FF5D98CF2072E3B900C48347 /* OperatorPrecedence.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5D98CB2072E3B900C48347 /* OperatorPrecedence.swift */; };
 		FF5D98D02072E3B900C48347 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5D98CC2072E3B900C48347 /* Parser.swift */; };
 		FF5D98D12072E3B900C48347 /* ParserError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5D98CD2072E3B900C48347 /* ParserError.swift */; };
+		FF5D98DB2072EFD500C48347 /* CobainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5D98DA2072EFD500C48347 /* CobainTests.swift */; };
+		FF5D98E22072F00B00C48347 /* ParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5D98E12072F00B00C48347 /* ParserTests.swift */; };
 		FF86097A1F6DDB1B00A38D90 /* CharacterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8609731F6DDB0B00A38D90 /* CharacterExtensions.swift */; };
 		FF86097C1F6DDB1B00A38D90 /* Lexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8609761F6DDB0B00A38D90 /* Lexer.swift */; };
 		FF86097D1F6DDB1B00A38D90 /* LexerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8609771F6DDB0B00A38D90 /* LexerError.swift */; };
@@ -37,6 +39,10 @@
 		FF5D98CB2072E3B900C48347 /* OperatorPrecedence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperatorPrecedence.swift; sourceTree = "<group>"; };
 		FF5D98CC2072E3B900C48347 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		FF5D98CD2072E3B900C48347 /* ParserError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParserError.swift; sourceTree = "<group>"; };
+		FF5D98D82072EFD500C48347 /* CobainTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CobainTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF5D98DA2072EFD500C48347 /* CobainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CobainTests.swift; sourceTree = "<group>"; };
+		FF5D98DC2072EFD500C48347 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF5D98E12072F00B00C48347 /* ParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserTests.swift; sourceTree = "<group>"; };
 		FF8609731F6DDB0B00A38D90 /* CharacterExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterExtensions.swift; sourceTree = "<group>"; };
 		FF8609761F6DDB0B00A38D90 /* Lexer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lexer.swift; sourceTree = "<group>"; };
 		FF8609771F6DDB0B00A38D90 /* LexerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LexerError.swift; sourceTree = "<group>"; };
@@ -48,6 +54,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		FF5D98D52072EFD500C48347 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FFB231ED1E66256A00BCF030 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -58,6 +71,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FF5D98D92072EFD500C48347 /* CobainTests */ = {
+			isa = PBXGroup;
+			children = (
+				FF5D98E02072EFFB00C48347 /* Parser */,
+				FF5D98DA2072EFD500C48347 /* CobainTests.swift */,
+				FF5D98DC2072EFD500C48347 /* Info.plist */,
+			);
+			path = CobainTests;
+			sourceTree = "<group>";
+		};
+		FF5D98E02072EFFB00C48347 /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				FF5D98E12072F00B00C48347 /* ParserTests.swift */,
+			);
+			path = Parser;
+			sourceTree = "<group>";
+		};
 		FF8609721F6DDB0B00A38D90 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				FFB231F21E66256A00BCF030 /* Cobain */,
+				FF5D98D92072EFD500C48347 /* CobainTests */,
 				FFB231F11E66256A00BCF030 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -101,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				FFB231F01E66256A00BCF030 /* Cobain */,
+				FF5D98D82072EFD500C48347 /* CobainTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -119,6 +152,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		FF5D98D72072EFD500C48347 /* CobainTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FF5D98DD2072EFD500C48347 /* Build configuration list for PBXNativeTarget "CobainTests" */;
+			buildPhases = (
+				FF5D98D42072EFD500C48347 /* Sources */,
+				FF5D98D52072EFD500C48347 /* Frameworks */,
+				FF5D98D62072EFD500C48347 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CobainTests;
+			productName = CobainTests;
+			productReference = FF5D98D82072EFD500C48347 /* CobainTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		FFB231EF1E66256A00BCF030 /* Cobain */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FFB231F71E66256A00BCF030 /* Build configuration list for PBXNativeTarget "Cobain" */;
@@ -142,10 +192,15 @@
 		FFB231E81E66256A00BCF030 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0820;
+				LastSwiftUpdateCheck = 0930;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Alexandru Culeva";
 				TargetAttributes = {
+					FF5D98D72072EFD500C48347 = {
+						CreatedOnToolsVersion = 9.3;
+						DevelopmentTeam = QE33WF5A23;
+						ProvisioningStyle = Automatic;
+					};
 					FFB231EF1E66256A00BCF030 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = QE33WF5A23;
@@ -167,11 +222,31 @@
 			projectRoot = "";
 			targets = (
 				FFB231EF1E66256A00BCF030 /* Cobain */,
+				FF5D98D72072EFD500C48347 /* CobainTests */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		FF5D98D62072EFD500C48347 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		FF5D98D42072EFD500C48347 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF5D98E22072F00B00C48347 /* ParserTests.swift in Sources */,
+				FF5D98DB2072EFD500C48347 /* CobainTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FFB231EC1E66256A00BCF030 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -193,6 +268,49 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		FF5D98DE2072EFD500C48347 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = QE33WF5A23;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = CobainTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aculeva.CobainTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		FF5D98DF2072EFD500C48347 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = QE33WF5A23;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = CobainTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aculeva.CobainTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
 		FFB231F51E66256A00BCF030 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -321,6 +439,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		FF5D98DD2072EFD500C48347 /* Build configuration list for PBXNativeTarget "CobainTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF5D98DE2072EFD500C48347 /* Debug */,
+				FF5D98DF2072EFD500C48347 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		FFB231EB1E66256A00BCF030 /* Build configuration list for PBXProject "Cobain" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

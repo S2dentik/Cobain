@@ -1,8 +1,14 @@
 let stream = Stream("""
 motif add() {
-    return 1+1; #just adds these two numbers
+    3 + 5
 }
 """)
 
 let tokens = Lexer(stream: stream).tokens
+let parser = Parser(tokens: tokens)
 print(tokens)
+do {
+    print(try parser.parse())
+} catch let error as ParserError {
+    print(error.description)
+}

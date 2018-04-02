@@ -12,7 +12,7 @@ struct Lexer {
         var lastChar = Character.space
         while true {
             guard let next = stream.read() else { return nil }
-            if (lastChar =! next) != .space { break }
+            if (lastChar =! next) != .space && lastChar != .newline { break } // Ignore spaces and newlines
         }
         if lastChar.isAlpha {
             var identifier = String(lastChar)
