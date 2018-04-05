@@ -1,3 +1,5 @@
+import CobainFramework
+
 let stream = Stream("""
 motif add() {
     3 + 5

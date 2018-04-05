@@ -6,10 +6,10 @@ struct Parser {
         self.tokens = Stream(tokens)
     }
 
-    func parse() throws {
+    func parse() throws -> AST {
         tokens.read() // read first token
         var syntaxTree = [AST]()
-        while true {
+        while !tokens.isEmpty {
             switch tokens.current {
             case .motif?:
                 (try parseFunctionDefinition()).map { syntaxTree.append($0) }
@@ -21,10 +21,11 @@ struct Parser {
                 (try parseTopLevelExpression()).map { syntaxTree.append($0) }
             }
         }
+        return .root(syntaxTree)
     }
 
     private func parsePrimary() throws -> AST? {
-        guard let next = tokens.read() else {
+        guard let next = tokens.stalk() else {
             return nil
         }
         switch next {
@@ -40,7 +41,7 @@ struct Parser {
     }
 
     private func parseIdentifier(_ identifier: String) throws -> AST? {
-        guard let next = tokens.read() else { return nil }
+        guard let next = tokens.stalk() else { return nil }
         if next.character != "(" { // Simply a variable, not a function call
             return .variable(identifier)
         }
@@ -62,9 +63,20 @@ struct Parser {
     }
 
     private func parseParentheses() throws -> AST? {
+        tokens.read() // eat '('
         guard let next = tokens.read(), let expr = try parseExpression() else { return nil }
         if let char = next.character, char != ")" {
             throw ParserError.expected(")", got: char)
+        }
+
+        return expr
+    }
+
+    private func parseCurlyBrackets() throws -> AST? {
+        tokens.read() // eat '{'
+        let expr = try parseExpression()
+        if let char = tokens.read()?.character, char != "}" {
+            throw ParserError.expected("}", got: char)
         }
 
         return expr
@@ -76,6 +88,8 @@ struct Parser {
         }
         switch token {
         case "(": return try parseParentheses()
+        case "{": return try parseCurlyBrackets()
+        case "}", ")": return nil // this will be handled by the function
         default: throw ParserError.unknownToken(token)
         }
     }
@@ -93,13 +107,12 @@ struct Parser {
                 precedence > leftPrecedence else { return lhs } // Not a binop or lower precedence
             op = tokens.read()?.character // Consume the binop
             guard let rhs = try parsePrimary() else { return nil }
-            var rightAST: AST?
+            var rightAST = rhs
             if let nextPrecedence = tokens.stalk().flatMap({ $0.character?.precedence }),
                 nextPrecedence > precedence {
-                rightAST = try parseBinaryOperatorRHS(precedence + 1, lhs: rhs)
-                if rightAST == nil { return nil }
+                (try parseBinaryOperatorRHS(precedence + 1, lhs: rhs)).map { rightAST = $0 }
             }
-            op.flatMap { op in rightAST.map { .binary(op: op, lhs, $0) } }.map { lhs = $0 }
+            op.map { lhs = .binary(op: $0, lhs, rightAST) }
         }
     }
 
@@ -118,16 +131,16 @@ struct Parser {
         guard case let .unknown(token2)? = tokens.current, token2 == ")" else {
             throw ParserError.raw("Expected ')' in prototype")
         }
-        tokens.read()
 
         return Prototype(name: functionName, args: arguments)
     }
 
     private func parseFunctionDefinition() throws -> AST? {
         tokens.read() // eat 'motif'
-        guard let proto = try parsePrototype(), let expr = try parseExpression() else { return nil }
+        guard let proto = try parsePrototype() else { return nil }
+        let body = try parseExpression()
 
-        return .motif(proto, body: expr)
+        return .motif(proto, body: body)
     }
 
     private func parseExtern() throws -> AST? {

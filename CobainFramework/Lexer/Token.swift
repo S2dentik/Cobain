@@ -1,4 +1,4 @@
-enum Token {
+enum Token: Equatable {
     case motif // Function
     case extern // External
     case identifier(String)
@@ -10,18 +10,6 @@ enum Token {
         case "motif": self = .motif
         case "extern": self = .extern
         default: self = .identifier(identifier)
-        }
-    }
-}
-
-extension Token: Equatable {
-    static func == (lhs: Token, rhs: Token) -> Bool {
-        switch (lhs, rhs) {
-        case (.motif, .motif), (.extern, .extern): return true
-        case let (.identifier(lID), .identifier(rID)): return lID == rID
-        case let (.number(lNumber), .number(rNumber)): return lNumber == rNumber
-        case let (.unknown(lChar), .unknown(rChar)): return lChar == rChar
-        default: return false
         }
     }
 }

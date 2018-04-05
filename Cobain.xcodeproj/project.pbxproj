@@ -7,20 +7,37 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FF5D98CE2072E3B900C48347 /* AST.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5D98CA2072E3B800C48347 /* AST.swift */; };
-		FF5D98CF2072E3B900C48347 /* OperatorPrecedence.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5D98CB2072E3B900C48347 /* OperatorPrecedence.swift */; };
-		FF5D98D02072E3B900C48347 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5D98CC2072E3B900C48347 /* Parser.swift */; };
-		FF5D98D12072E3B900C48347 /* ParserError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5D98CD2072E3B900C48347 /* ParserError.swift */; };
-		FF5D98DB2072EFD500C48347 /* CobainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5D98DA2072EFD500C48347 /* CobainTests.swift */; };
 		FF5D98E22072F00B00C48347 /* ParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5D98E12072F00B00C48347 /* ParserTests.swift */; };
-		FF86097A1F6DDB1B00A38D90 /* CharacterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8609731F6DDB0B00A38D90 /* CharacterExtensions.swift */; };
-		FF86097C1F6DDB1B00A38D90 /* Lexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8609761F6DDB0B00A38D90 /* Lexer.swift */; };
-		FF86097D1F6DDB1B00A38D90 /* LexerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8609771F6DDB0B00A38D90 /* LexerError.swift */; };
-		FF86097E1F6DDB1B00A38D90 /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8609781F6DDB0B00A38D90 /* Stream.swift */; };
-		FF86097F1F6DDB1B00A38D90 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8609791F6DDB0B00A38D90 /* Token.swift */; };
-		FF8609841F6DDE1C00A38D90 /* SequenceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8609831F6DDE1C00A38D90 /* SequenceExtensions.swift */; };
+		FF5D98EC2072F25000C48347 /* CobainFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = FF5D98EA2072F25000C48347 /* CobainFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FF5D98F02072F25B00C48347 /* AST.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5D98CA2072E3B800C48347 /* AST.swift */; };
+		FF5D98F12072F25B00C48347 /* OperatorPrecedence.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5D98CB2072E3B900C48347 /* OperatorPrecedence.swift */; };
+		FF5D98F22072F25B00C48347 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5D98CC2072E3B900C48347 /* Parser.swift */; };
+		FF5D98F32072F25B00C48347 /* ParserError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5D98CD2072E3B900C48347 /* ParserError.swift */; };
+		FF5D98F42072F25B00C48347 /* CharacterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8609731F6DDB0B00A38D90 /* CharacterExtensions.swift */; };
+		FF5D98F52072F25B00C48347 /* SequenceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8609831F6DDE1C00A38D90 /* SequenceExtensions.swift */; };
+		FF5D98F62072F25B00C48347 /* Lexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8609761F6DDB0B00A38D90 /* Lexer.swift */; };
+		FF5D98F72072F25B00C48347 /* LexerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8609771F6DDB0B00A38D90 /* LexerError.swift */; };
+		FF5D98F82072F25B00C48347 /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8609781F6DDB0B00A38D90 /* Stream.swift */; };
+		FF5D98F92072F25B00C48347 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8609791F6DDB0B00A38D90 /* Token.swift */; };
 		FFB231F41E66256A00BCF030 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB231F31E66256A00BCF030 /* main.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FF5D98FA2072F29900C48347 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FFB231E81E66256A00BCF030 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FF5D98E72072F25000C48347;
+			remoteInfo = CobainFramework;
+		};
+		FF5D98FC2072F47400C48347 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FFB231E81E66256A00BCF030 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FF5D98E72072F25000C48347;
+			remoteInfo = CobainFramework;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		FFB231EE1E66256A00BCF030 /* CopyFiles */ = {
@@ -40,9 +57,11 @@
 		FF5D98CC2072E3B900C48347 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		FF5D98CD2072E3B900C48347 /* ParserError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParserError.swift; sourceTree = "<group>"; };
 		FF5D98D82072EFD500C48347 /* CobainTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CobainTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FF5D98DA2072EFD500C48347 /* CobainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CobainTests.swift; sourceTree = "<group>"; };
 		FF5D98DC2072EFD500C48347 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF5D98E12072F00B00C48347 /* ParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserTests.swift; sourceTree = "<group>"; };
+		FF5D98E82072F25000C48347 /* CobainFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CobainFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF5D98EA2072F25000C48347 /* CobainFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CobainFramework.h; sourceTree = "<group>"; };
+		FF5D98EB2072F25000C48347 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF8609731F6DDB0B00A38D90 /* CharacterExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterExtensions.swift; sourceTree = "<group>"; };
 		FF8609761F6DDB0B00A38D90 /* Lexer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lexer.swift; sourceTree = "<group>"; };
 		FF8609771F6DDB0B00A38D90 /* LexerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LexerError.swift; sourceTree = "<group>"; };
@@ -55,6 +74,13 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		FF5D98D52072EFD500C48347 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF5D98E42072F25000C48347 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -75,7 +101,6 @@
 			isa = PBXGroup;
 			children = (
 				FF5D98E02072EFFB00C48347 /* Parser */,
-				FF5D98DA2072EFD500C48347 /* CobainTests.swift */,
 				FF5D98DC2072EFD500C48347 /* Info.plist */,
 			);
 			path = CobainTests;
@@ -87,6 +112,18 @@
 				FF5D98E12072F00B00C48347 /* ParserTests.swift */,
 			);
 			path = Parser;
+			sourceTree = "<group>";
+		};
+		FF5D98E92072F25000C48347 /* CobainFramework */ = {
+			isa = PBXGroup;
+			children = (
+				FF8609801F6DDB2900A38D90 /* Parser */,
+				FF8609721F6DDB0B00A38D90 /* Extensions */,
+				FF8609751F6DDB0B00A38D90 /* Lexer */,
+				FF5D98EA2072F25000C48347 /* CobainFramework.h */,
+				FF5D98EB2072F25000C48347 /* Info.plist */,
+			);
+			path = CobainFramework;
 			sourceTree = "<group>";
 		};
 		FF8609721F6DDB0B00A38D90 /* Extensions */ = {
@@ -124,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				FFB231F21E66256A00BCF030 /* Cobain */,
+				FF5D98E92072F25000C48347 /* CobainFramework */,
 				FF5D98D92072EFD500C48347 /* CobainTests */,
 				FFB231F11E66256A00BCF030 /* Products */,
 			);
@@ -134,6 +172,7 @@
 			children = (
 				FFB231F01E66256A00BCF030 /* Cobain */,
 				FF5D98D82072EFD500C48347 /* CobainTests.xctest */,
+				FF5D98E82072F25000C48347 /* CobainFramework.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -141,15 +180,23 @@
 		FFB231F21E66256A00BCF030 /* Cobain */ = {
 			isa = PBXGroup;
 			children = (
-				FF8609801F6DDB2900A38D90 /* Parser */,
-				FF8609721F6DDB0B00A38D90 /* Extensions */,
-				FF8609751F6DDB0B00A38D90 /* Lexer */,
 				FFB231F31E66256A00BCF030 /* main.swift */,
 			);
 			path = Cobain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		FF5D98E52072F25000C48347 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF5D98EC2072F25000C48347 /* CobainFramework.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		FF5D98D72072EFD500C48347 /* CobainTests */ = {
@@ -163,11 +210,30 @@
 			buildRules = (
 			);
 			dependencies = (
+				FF5D98FD2072F47400C48347 /* PBXTargetDependency */,
 			);
 			name = CobainTests;
 			productName = CobainTests;
 			productReference = FF5D98D82072EFD500C48347 /* CobainTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		FF5D98E72072F25000C48347 /* CobainFramework */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FF5D98ED2072F25000C48347 /* Build configuration list for PBXNativeTarget "CobainFramework" */;
+			buildPhases = (
+				FF5D98E32072F25000C48347 /* Sources */,
+				FF5D98E42072F25000C48347 /* Frameworks */,
+				FF5D98E52072F25000C48347 /* Headers */,
+				FF5D98E62072F25000C48347 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CobainFramework;
+			productName = CobainFramework;
+			productReference = FF5D98E82072F25000C48347 /* CobainFramework.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 		FFB231EF1E66256A00BCF030 /* Cobain */ = {
 			isa = PBXNativeTarget;
@@ -180,6 +246,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				FF5D98FB2072F29900C48347 /* PBXTargetDependency */,
 			);
 			name = Cobain;
 			productName = Cobain;
@@ -197,6 +264,11 @@
 				ORGANIZATIONNAME = "Alexandru Culeva";
 				TargetAttributes = {
 					FF5D98D72072EFD500C48347 = {
+						CreatedOnToolsVersion = 9.3;
+						DevelopmentTeam = QE33WF5A23;
+						ProvisioningStyle = Automatic;
+					};
+					FF5D98E72072F25000C48347 = {
 						CreatedOnToolsVersion = 9.3;
 						DevelopmentTeam = QE33WF5A23;
 						ProvisioningStyle = Automatic;
@@ -222,6 +294,7 @@
 			projectRoot = "";
 			targets = (
 				FFB231EF1E66256A00BCF030 /* Cobain */,
+				FF5D98E72072F25000C48347 /* CobainFramework */,
 				FF5D98D72072EFD500C48347 /* CobainTests */,
 			);
 		};
@@ -229,6 +302,13 @@
 
 /* Begin PBXResourcesBuildPhase section */
 		FF5D98D62072EFD500C48347 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF5D98E62072F25000C48347 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -243,7 +323,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF5D98E22072F00B00C48347 /* ParserTests.swift in Sources */,
-				FF5D98DB2072EFD500C48347 /* CobainTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF5D98E32072F25000C48347 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF5D98F02072F25B00C48347 /* AST.swift in Sources */,
+				FF5D98F92072F25B00C48347 /* Token.swift in Sources */,
+				FF5D98F62072F25B00C48347 /* Lexer.swift in Sources */,
+				FF5D98F42072F25B00C48347 /* CharacterExtensions.swift in Sources */,
+				FF5D98F12072F25B00C48347 /* OperatorPrecedence.swift in Sources */,
+				FF5D98F22072F25B00C48347 /* Parser.swift in Sources */,
+				FF5D98F72072F25B00C48347 /* LexerError.swift in Sources */,
+				FF5D98F52072F25B00C48347 /* SequenceExtensions.swift in Sources */,
+				FF5D98F82072F25B00C48347 /* Stream.swift in Sources */,
+				FF5D98F32072F25B00C48347 /* ParserError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,26 +347,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF5D98CE2072E3B900C48347 /* AST.swift in Sources */,
-				FF5D98D02072E3B900C48347 /* Parser.swift in Sources */,
-				FF5D98CF2072E3B900C48347 /* OperatorPrecedence.swift in Sources */,
-				FF8609841F6DDE1C00A38D90 /* SequenceExtensions.swift in Sources */,
-				FF86097F1F6DDB1B00A38D90 /* Token.swift in Sources */,
-				FF86097E1F6DDB1B00A38D90 /* Stream.swift in Sources */,
-				FF5D98D12072E3B900C48347 /* ParserError.swift in Sources */,
 				FFB231F41E66256A00BCF030 /* main.swift in Sources */,
-				FF86097C1F6DDB1B00A38D90 /* Lexer.swift in Sources */,
-				FF86097A1F6DDB1B00A38D90 /* CharacterExtensions.swift in Sources */,
-				FF86097D1F6DDB1B00A38D90 /* LexerError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		FF5D98FB2072F29900C48347 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FF5D98E72072F25000C48347 /* CobainFramework */;
+			targetProxy = FF5D98FA2072F29900C48347 /* PBXContainerItemProxy */;
+		};
+		FF5D98FD2072F47400C48347 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FF5D98E72072F25000C48347 /* CobainFramework */;
+			targetProxy = FF5D98FC2072F47400C48347 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
 		FF5D98DE2072EFD500C48347 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -293,6 +393,7 @@
 		FF5D98DF2072EFD500C48347 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -308,6 +409,71 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.aculeva.CobainTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		FF5D98EE2072F25000C48347 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = QE33WF5A23;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = CobainFramework/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aculeva.CobainFramework;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 4.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		FF5D98EF2072F25000C48347 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = QE33WF5A23;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = CobainFramework/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aculeva.CobainFramework;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -419,8 +585,11 @@
 		FFB231F81E66256A00BCF030 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEVELOPMENT_TEAM = QE33WF5A23;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
 			};
@@ -429,8 +598,11 @@
 		FFB231F91E66256A00BCF030 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEVELOPMENT_TEAM = QE33WF5A23;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
 			};
@@ -444,6 +616,15 @@
 			buildConfigurations = (
 				FF5D98DE2072EFD500C48347 /* Debug */,
 				FF5D98DF2072EFD500C48347 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FF5D98ED2072F25000C48347 /* Build configuration list for PBXNativeTarget "CobainFramework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF5D98EE2072F25000C48347 /* Debug */,
+				FF5D98EF2072F25000C48347 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

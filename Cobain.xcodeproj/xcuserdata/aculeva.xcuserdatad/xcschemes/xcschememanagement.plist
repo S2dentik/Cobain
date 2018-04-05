@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>CobainFramework.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
 		<key>CobainTests.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -17,6 +22,16 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>FF5D98D72072EFD500C48347</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FF5D98E72072F25000C48347</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>FFB231EF1E66256A00BCF030</key>
 		<dict>
 			<key>primary</key>

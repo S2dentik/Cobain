@@ -3,6 +3,10 @@ class Stream<T: Collection & SubsequenceInitializable> {
     private var sequence: T
 
     var current: T.Element?
+
+    var isEmpty: Bool {
+        return sequence.isEmpty
+    }
     
     init(_ sequence: T) {
         self.sequence = sequence
@@ -11,7 +15,11 @@ class Stream<T: Collection & SubsequenceInitializable> {
     /// Reads first character of the stream and consumes it
     @discardableResult
     func read() -> T.Element? {
-        guard let firstChar = sequence.first else { return nil }
+        guard let firstChar = sequence.first else {
+            current = nil
+            
+            return nil
+        }
         sequence = sequence.droppingFirst
         current = firstChar
         return firstChar
