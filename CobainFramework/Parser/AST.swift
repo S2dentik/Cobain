@@ -1,5 +1,3 @@
-import LLVM_C
-
 public indirect enum AST: Equatable {
     case number(Double)
     case variable(String)
@@ -7,7 +5,6 @@ public indirect enum AST: Equatable {
     case call(callee: String, args: [AST])
     case prototype(Prototype)
     case motif(Prototype, body: AST?)
-    case root([AST])
 }
 
 public struct Prototype: Equatable {

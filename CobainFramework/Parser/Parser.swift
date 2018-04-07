@@ -6,7 +6,7 @@ public struct Parser {
         self.tokens = Stream(tokens)
     }
 
-    public func parse() throws -> AST {
+    public func parse() throws -> [AST] {
         tokens.read() // read first token
         var syntaxTree = [AST]()
         while !tokens.isEmpty {
@@ -21,7 +21,7 @@ public struct Parser {
                 (try parseTopLevelExpression()).map { syntaxTree.append($0) }
             }
         }
-        return .root(syntaxTree)
+        return syntaxTree
     }
 
     private func parsePrimary() throws -> AST? {

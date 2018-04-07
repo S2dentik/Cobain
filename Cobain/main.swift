@@ -7,10 +7,5 @@ motif add() {
 """)
 
 let tokens = Lexer(stream: stream).tokens
-let parser = Parser(tokens: tokens)
-print(tokens)
-do {
-    print(try parser.parse())
-} catch let error as ParserError {
-    print(error.description)
-}
+let ast = try Parser(tokens: tokens).parse()
+

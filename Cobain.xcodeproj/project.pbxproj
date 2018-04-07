@@ -19,6 +19,8 @@
 		FF5D98F72072F25B00C48347 /* LexerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8609771F6DDB0B00A38D90 /* LexerError.swift */; };
 		FF5D98F82072F25B00C48347 /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8609781F6DDB0B00A38D90 /* Stream.swift */; };
 		FF5D98F92072F25B00C48347 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8609791F6DDB0B00A38D90 /* Token.swift */; };
+		FF7C35E62076B1C60096D6DC /* LLVMCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7C35E52076B1C60096D6DC /* LLVMCodeGenerator.swift */; };
+		FF7C35E8207797BB0096D6DC /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7C35E7207797BB0096D6DC /* ArrayExtensions.swift */; };
 		FFB231F41E66256A00BCF030 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB231F31E66256A00BCF030 /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +67,8 @@
 		FF7C35DE207692670096D6DC /* libc++.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.1.tbd"; path = "usr/lib/libc++.1.tbd"; sourceTree = SDKROOT; };
 		FF7C35E02076A84C0096D6DC /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		FF7C35E12076A84C0096D6DC /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
+		FF7C35E52076B1C60096D6DC /* LLVMCodeGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLVMCodeGenerator.swift; sourceTree = "<group>"; };
+		FF7C35E7207797BB0096D6DC /* ArrayExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
 		FF8609731F6DDB0B00A38D90 /* CharacterExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterExtensions.swift; sourceTree = "<group>"; };
 		FF8609761F6DDB0B00A38D90 /* Lexer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lexer.swift; sourceTree = "<group>"; };
 		FF8609771F6DDB0B00A38D90 /* LexerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LexerError.swift; sourceTree = "<group>"; };
@@ -120,20 +124,14 @@
 		FF5D98E92072F25000C48347 /* CobainFramework */ = {
 			isa = PBXGroup;
 			children = (
-				FF8609801F6DDB2900A38D90 /* Parser */,
-				FF8609721F6DDB0B00A38D90 /* Extensions */,
 				FF8609751F6DDB0B00A38D90 /* Lexer */,
+				FF8609801F6DDB2900A38D90 /* Parser */,
+				FF7C35E42076B18D0096D6DC /* Codegen */,
+				FF8609721F6DDB0B00A38D90 /* Extensions */,
 				FF5D98EA2072F25000C48347 /* CobainFramework.h */,
 				FF5D98EB2072F25000C48347 /* Info.plist */,
 			);
 			path = CobainFramework;
-			sourceTree = "<group>";
-		};
-		FF7C2C27207690790096D6DC /* LLVM */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = LLVM;
 			sourceTree = "<group>";
 		};
 		FF7C35DD207692660096D6DC /* Frameworks */ = {
@@ -146,11 +144,20 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		FF7C35E42076B18D0096D6DC /* Codegen */ = {
+			isa = PBXGroup;
+			children = (
+				FF7C35E52076B1C60096D6DC /* LLVMCodeGenerator.swift */,
+			);
+			path = Codegen;
+			sourceTree = "<group>";
+		};
 		FF8609721F6DDB0B00A38D90 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				FF8609731F6DDB0B00A38D90 /* CharacterExtensions.swift */,
 				FF8609831F6DDE1C00A38D90 /* SequenceExtensions.swift */,
+				FF7C35E7207797BB0096D6DC /* ArrayExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -180,7 +187,6 @@
 		FFB231E71E66256A00BCF030 = {
 			isa = PBXGroup;
 			children = (
-				FF7C2C27207690790096D6DC /* LLVM */,
 				FFB231F21E66256A00BCF030 /* Cobain */,
 				FF5D98E92072F25000C48347 /* CobainFramework */,
 				FF5D98D92072EFD500C48347 /* CobainTests */,
@@ -355,9 +361,11 @@
 				FF5D98F02072F25B00C48347 /* AST.swift in Sources */,
 				FF5D98F92072F25B00C48347 /* Token.swift in Sources */,
 				FF5D98F62072F25B00C48347 /* Lexer.swift in Sources */,
+				FF7C35E62076B1C60096D6DC /* LLVMCodeGenerator.swift in Sources */,
 				FF5D98F42072F25B00C48347 /* CharacterExtensions.swift in Sources */,
 				FF5D98F12072F25B00C48347 /* OperatorPrecedence.swift in Sources */,
 				FF5D98F22072F25B00C48347 /* Parser.swift in Sources */,
+				FF7C35E8207797BB0096D6DC /* ArrayExtensions.swift in Sources */,
 				FF5D98F72072F25B00C48347 /* LexerError.swift in Sources */,
 				FF5D98F52072F25B00C48347 /* SequenceExtensions.swift in Sources */,
 				FF5D98F82072F25B00C48347 /* Stream.swift in Sources */,
