@@ -36,3 +36,9 @@ public class Stream<T: Collection & SubsequenceInitializable> {
         return self
     }
 }
+
+extension Stream {
+    func map<B>(_ transform: (T.Element) -> B) -> [B] {
+        return sequence.map(transform)
+    }
+}

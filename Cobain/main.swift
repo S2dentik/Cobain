@@ -1,8 +1,8 @@
 import CobainFramework
 
 let stream = Stream("""
-motif add(a, b) {
-    a + b
+motif incr(a) {
+    a + 1
 }
 """)
 

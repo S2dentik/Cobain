@@ -30,7 +30,6 @@ extension Token {
     var character: Character? {
         switch self {
         case let .unknown(character): return character
-        case let .identifier(identifier): return Character(identifier)
         default: return nil
         }
     }
@@ -39,6 +38,7 @@ extension Token {
         switch self {
         case let .unknown(character): return String(character)
         case let .identifier(identifier): return identifier
+        case let .number(number): return String(number)
         default: return nil
         }
     }

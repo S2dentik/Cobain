@@ -25,10 +25,10 @@ public struct Parser {
     }
 
     private func parsePrimary() throws -> AST? {
-        guard let next = tokens.stalk() else {
+        guard let current = tokens.current else {
             return nil
         }
-        switch next {
+        switch current {
         case .number(let number): return parseNumber(number)
         case .identifier(let identifier): return try parseIdentifier(identifier)
         case .unknown(let token): return try parseToken(token)
@@ -45,7 +45,8 @@ public struct Parser {
         if next.character != "(" { // Simply a variable, not a function call
             return .variable(identifier)
         }
-        guard let possiblyArg = tokens.stalk()?.string else { return nil }
+        _ = tokens.read() // Consume the '('
+        guard let possiblyArg = tokens.read()?.string else { return nil } // Should be either argument or ')'
         if possiblyArg == ")" {
             return .call(callee: identifier, args: [])
         }
@@ -75,10 +76,10 @@ public struct Parser {
     private func parseCurlyBrackets() throws -> AST? {
         tokens.read() // eat '{'
         let expr = try parseExpression()
-        if let char = tokens.read()?.character, char != "}" {
+        if let char = tokens.current?.character, char != "}" {
             throw ParserError.expected("}", got: char)
         }
-
+        tokens.read() // consume the '}'
         return expr
     }
 
@@ -96,7 +97,6 @@ public struct Parser {
 
     private func parseExpression() throws -> AST? {
         guard let lhs = try parsePrimary() else { return nil }
-        tokens.read() // eat the lhs
         return try parseBinaryOperatorRHS(0, lhs: lhs)
     }
 
@@ -107,6 +107,7 @@ public struct Parser {
             guard let precedence = tokens.stalk().flatMap({ $0.character?.precedence }),
                 precedence > leftPrecedence else { return lhs } // Not a binop or lower precedence
             op = tokens.read()?.character // Consume the binop
+            tokens.read() // consume character after 'binop'
             guard let rhs = try parsePrimary() else { return nil }
             var rightAST = rhs
             if let nextPrecedence = tokens.stalk().flatMap({ $0.character?.precedence }),
@@ -136,6 +137,7 @@ public struct Parser {
         guard case let .unknown(token2)? = tokens.current, token2 == ")" else {
             throw ParserError.raw("Expected ')' in prototype")
         }
+        tokens.read() // consume the ')'
 
         return Prototype(name: functionName, args: arguments)
     }
@@ -157,6 +159,6 @@ public struct Parser {
 
     private func parseTopLevelExpression() throws -> AST? {
         guard let expr = try parseExpression() else { return nil }
-        return .motif(Prototype(name: "", args: []), body: expr)
+        return .motif(Prototype(name: "main", args: []), body: expr)
     }
 }

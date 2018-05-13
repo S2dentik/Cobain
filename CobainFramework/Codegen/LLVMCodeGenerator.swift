@@ -23,6 +23,7 @@ final public class LLVMCodeGenerator {
     public func generate(_ trees: [AST]) throws -> Int32 {
         let values = try trees.map(getValue)
         let error = UnsafeMutablePointer<UnsafeMutablePointer<Int8>?>.allocate(capacity: 1)
+        LLVMDumpModule(module)
         LLVMVerifyModule(module, LLVMAbortProcessAction, error)
         if let error = error.pointee {
             print(error)
@@ -33,7 +34,7 @@ final public class LLVMCodeGenerator {
     func getValue(for tree: AST) throws -> LLVMValueRef {
         switch tree {
         case let .number(number):
-            return LLVMConstReal(LLVMFloatTypeInContext(context), number)
+            return LLVMConstReal(LLVMDoubleTypeInContext(context), number)
         case let .variable(name):
             if let value = namedValues[name] { return value }
             throw LLVMCodeGeneratorError.unknownVariable(name)
@@ -58,7 +59,7 @@ final public class LLVMCodeGenerator {
             guard let f = LLVMGetNamedFunction(module, name) else {
                 throw LLVMCodeGeneratorError.unknownFunction(name)
             }
-            let expectedArgsCount = Int(LLVMGetNumArgOperands(f))
+            let expectedArgsCount = Int(LLVMCountParams(f))
             guard args.count == expectedArgsCount else {
                 throw LLVMCodeGeneratorError.incorrectNumberOfArguments(expected: expectedArgsCount, got: args.count)
             }
@@ -69,6 +70,7 @@ final public class LLVMCodeGenerator {
             guard let f = LLVMAddFunction(module, prototype.name, fType) else {
                 throw LLVMCodeGeneratorError.uninitializedFunction(prototype.name)
             }
+            LLVMSetLinkage(f, LLVMExternalLinkage)
             let params = UnsafeMutablePointer<LLVMValueRef?>.allocate(capacity: prototype.args.count)
             LLVMGetParams(f, params)
             namedValues = [:]
