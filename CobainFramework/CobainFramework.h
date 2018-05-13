@@ -6,7 +6,7 @@
 //  Copyright © 2018 Alexandru Culeva. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+@import Cocoa;
 
 //! Project version number for CobainFramework.
 FOUNDATION_EXPORT double CobainFrameworkVersionNumber;

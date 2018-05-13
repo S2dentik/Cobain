@@ -1,4 +1,4 @@
-class Stream<T: Collection & SubsequenceInitializable> {
+public class Stream<T: Collection & SubsequenceInitializable> {
     
     private var sequence: T
 
@@ -8,7 +8,7 @@ class Stream<T: Collection & SubsequenceInitializable> {
         return sequence.isEmpty
     }
     
-    init(_ sequence: T) {
+    public init(_ sequence: T) {
         self.sequence = sequence
     }
     

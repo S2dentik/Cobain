@@ -1,4 +1,4 @@
-enum Token: Equatable {
+public enum Token: Equatable {
     case motif // Function
     case extern // External
     case identifier(String)
@@ -15,7 +15,7 @@ enum Token: Equatable {
 }
 
 extension Token: CustomStringConvertible {
-    var description: String {
+    public var description: String {
         switch self {
         case .motif: return "motif"
         case .extern: return "extern"

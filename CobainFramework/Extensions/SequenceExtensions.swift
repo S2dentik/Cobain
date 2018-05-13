@@ -4,7 +4,7 @@ extension Collection where Self: SubsequenceInitializable {
     }
 }
 
-protocol SubsequenceInitializable {
+public protocol SubsequenceInitializable {
     associatedtype SubSequence
     init(subsequence: SubSequence)
 }

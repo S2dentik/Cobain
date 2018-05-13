@@ -62,6 +62,9 @@
 		FF5D98E82072F25000C48347 /* CobainFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CobainFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF5D98EA2072F25000C48347 /* CobainFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CobainFramework.h; sourceTree = "<group>"; };
 		FF5D98EB2072F25000C48347 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF7C35DE207692670096D6DC /* libc++.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.1.tbd"; path = "usr/lib/libc++.1.tbd"; sourceTree = SDKROOT; };
+		FF7C35E02076A84C0096D6DC /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		FF7C35E12076A84C0096D6DC /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		FF8609731F6DDB0B00A38D90 /* CharacterExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterExtensions.swift; sourceTree = "<group>"; };
 		FF8609761F6DDB0B00A38D90 /* Lexer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lexer.swift; sourceTree = "<group>"; };
 		FF8609771F6DDB0B00A38D90 /* LexerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LexerError.swift; sourceTree = "<group>"; };
@@ -126,6 +129,23 @@
 			path = CobainFramework;
 			sourceTree = "<group>";
 		};
+		FF7C2C27207690790096D6DC /* LLVM */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LLVM;
+			sourceTree = "<group>";
+		};
+		FF7C35DD207692660096D6DC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FF7C35E02076A84C0096D6DC /* libc++.tbd */,
+				FF7C35E12076A84C0096D6DC /* libstdc++.tbd */,
+				FF7C35DE207692670096D6DC /* libc++.1.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FF8609721F6DDB0B00A38D90 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,10 +180,12 @@
 		FFB231E71E66256A00BCF030 = {
 			isa = PBXGroup;
 			children = (
+				FF7C2C27207690790096D6DC /* LLVM */,
 				FFB231F21E66256A00BCF030 /* Cobain */,
 				FF5D98E92072F25000C48347 /* CobainFramework */,
 				FF5D98D92072EFD500C48347 /* CobainTests */,
 				FFB231F11E66256A00BCF030 /* Products */,
+				FF7C35DD207692660096D6DC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -417,7 +439,8 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "Mac Developer";
@@ -433,8 +456,16 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = CobainFramework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_QUOTE_LINKER_ARGUMENTS_FOR_COMPILER_DRIVER = YES;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-lc++",
+					"-lncurses",
+				);
+				OTHER_SWIFT_FLAGS = "-I ${PROJECT_DIR}/LLVM/include/build -I ${PROJECT_DIR}/LLVM/include/source -Xcc -D__STDC_CONSTANT_MACROS -Xcc -D__STDC_LIMIT_MACROS -L $(PROJECT_DIR)/LLVM/lib -lncurses -lc++";
 				PRODUCT_BUNDLE_IDENTIFIER = com.aculeva.CobainFramework;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -450,7 +481,8 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "Mac Developer";
@@ -466,8 +498,16 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = CobainFramework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_QUOTE_LINKER_ARGUMENTS_FOR_COMPILER_DRIVER = YES;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-lc++",
+					"-lncurses",
+				);
+				OTHER_SWIFT_FLAGS = "-I ${PROJECT_DIR}/LLVM/include/build -I ${PROJECT_DIR}/LLVM/include/source -Xcc -D__STDC_CONSTANT_MACROS -Xcc -D__STDC_LIMIT_MACROS -L $(PROJECT_DIR)/LLVM/lib -lncurses -lc++";
 				PRODUCT_BUNDLE_IDENTIFIER = com.aculeva.CobainFramework;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;

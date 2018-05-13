@@ -1,10 +1,10 @@
-enum ParserError: Error {
+public enum ParserError: Error {
     case unknownToken(Character)
     case expected(Character, got: Character)
     case raw(String)
 }
 
-extension ParserError {
+public extension ParserError {
     var description: String {
         switch self {
         case .unknownToken(let token): return "Unknown token \(token)"

@@ -1,12 +1,12 @@
-struct Parser {
+public struct Parser {
 
     var tokens: Stream<[Token]>
 
-    init(tokens: [Token]) {
+    public init(tokens: [Token]) {
         self.tokens = Stream(tokens)
     }
 
-    func parse() throws -> AST {
+    public func parse() throws -> AST {
         tokens.read() // read first token
         var syntaxTree = [AST]()
         while !tokens.isEmpty {

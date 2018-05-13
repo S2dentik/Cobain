@@ -1,4 +1,6 @@
-indirect enum AST: Equatable {
+import LLVM_C
+
+public indirect enum AST: Equatable {
     case number(Double)
     case variable(String)
     case binary(op: Character, AST, AST)
@@ -8,7 +10,7 @@ indirect enum AST: Equatable {
     case root([AST])
 }
 
-struct Prototype: Equatable {
-    let name: String
-    let args: [String]
+public struct Prototype: Equatable {
+    public let name: String
+    public let args: [String]
 }
