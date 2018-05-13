@@ -80,9 +80,10 @@ final public class LLVMCodeGenerator {
         case let .motif(proto, body):
             let f = try LLVMGetNamedFunction(module, proto.name) ?? (try getValue(for: .prototype(proto)))
             // TODO: Check if the function was already defined
-            let instr = try body.map(getValue)
+
             let bb = LLVMAppendBasicBlockInContext(context, f, "entry")
             LLVMPositionBuilderAtEnd(builder, bb)
+            let instr = try body.map(getValue)
             LLVMBuildRet(builder, instr)
             LLVMVerifyFunction(f, LLVMAbortProcessAction)
 
