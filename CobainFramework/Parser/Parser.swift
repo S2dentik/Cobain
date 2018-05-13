@@ -96,6 +96,7 @@ public struct Parser {
 
     private func parseExpression() throws -> AST? {
         guard let lhs = try parsePrimary() else { return nil }
+        tokens.read() // eat the lhs
         return try parseBinaryOperatorRHS(0, lhs: lhs)
     }
 
@@ -112,6 +113,7 @@ public struct Parser {
                 nextPrecedence > precedence {
                 (try parseBinaryOperatorRHS(precedence + 1, lhs: rhs)).map { rightAST = $0 }
             }
+            tokens.read() // eat the rhs
             op.map { lhs = .binary(op: $0, lhs, rightAST) }
         }
     }
@@ -127,6 +129,9 @@ public struct Parser {
         var arguments = [String]()
         while case let .identifier(identifier)? = tokens.read() {
             arguments.append(identifier)
+            if case let .unknown(char)? = tokens.stalk(), char == "," {
+                tokens.read() // eat the ',' between function parameters
+            }
         }
         guard case let .unknown(token2)? = tokens.current, token2 == ")" else {
             throw ParserError.raw("Expected ')' in prototype")

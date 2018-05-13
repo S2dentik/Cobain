@@ -467,17 +467,33 @@
 				LD_QUOTE_LINKER_ARGUMENTS_FOR_COMPILER_DRIVER = YES;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACH_O_TYPE = mh_dylib;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
+					"-L${PROJECT_DIR}/LLVM/lib",
 					"-lc++",
 					"-lncurses",
+					"-lz",
+					"-lLLVMObject",
+					"-lLLVMMC",
+					"-lLLVMAnalysis",
+					"-lLLVMSupport",
+					"-lLLVMCore",
+					"-lLLVMBitWriter",
+					"-lLLVMBinaryFormat",
+					"-lLLVMDemangle",
+					"-lLLVMMCParser",
+					"-lLLVMBitReader",
+					"-lLLVMProfileData",
 				);
 				OTHER_SWIFT_FLAGS = "-I ${PROJECT_DIR}/LLVM/include/build -I ${PROJECT_DIR}/LLVM/include/source -Xcc -D__STDC_CONSTANT_MACROS -Xcc -D__STDC_LIMIT_MACROS -L $(PROJECT_DIR)/LLVM/lib -lncurses -lc++";
 				PRODUCT_BUNDLE_IDENTIFIER = com.aculeva.CobainFramework;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "";
 				SWIFT_VERSION = 4.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -509,16 +525,32 @@
 				LD_QUOTE_LINKER_ARGUMENTS_FOR_COMPILER_DRIVER = YES;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACH_O_TYPE = mh_dylib;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
+					"-L${PROJECT_DIR}/LLVM/lib",
 					"-lc++",
 					"-lncurses",
+					"-lz",
+					"-lLLVMObject",
+					"-lLLVMMC",
+					"-lLLVMAnalysis",
+					"-lLLVMSupport",
+					"-lLLVMCore",
+					"-lLLVMBitWriter",
+					"-lLLVMBinaryFormat",
+					"-lLLVMDemangle",
+					"-lLLVMMCParser",
+					"-lLLVMBitReader",
+					"-lLLVMProfileData",
 				);
 				OTHER_SWIFT_FLAGS = "-I ${PROJECT_DIR}/LLVM/include/build -I ${PROJECT_DIR}/LLVM/include/source -Xcc -D__STDC_CONSTANT_MACROS -Xcc -D__STDC_LIMIT_MACROS -L $(PROJECT_DIR)/LLVM/lib -lncurses -lc++";
 				PRODUCT_BUNDLE_IDENTIFIER = com.aculeva.CobainFramework;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "";
 				SWIFT_VERSION = 4.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -633,9 +665,11 @@
 		FFB231F81E66256A00BCF030 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
@@ -646,9 +680,11 @@
 		FFB231F91E66256A00BCF030 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;

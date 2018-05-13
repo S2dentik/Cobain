@@ -5,18 +5,22 @@ final public class LLVMCodeGenerator {
     var builder: LLVMBuilderRef
     var module: LLVMModuleRef
 
+    // Used for function arguments inside fucntion body
     var namedValues = [String: LLVMValueRef]()
 
-    public init?() {
-        guard let context = LLVMContextCreate(), let builder = LLVMCreateBuilderInContext(context) else {
-            return nil
+    public init() throws {
+        guard let context = LLVMContextCreate() else {
+            throw LLVMCodeGeneratorError.uninitializedContext
+        }
+        guard let builder = LLVMCreateBuilderInContext(context) else {
+            throw LLVMCodeGeneratorError.uninitializedBuilder
         }
         self.context = context
         self.builder = builder
-        self.module = LLVMModuleCreateWithName("Cobain")
+        self.module = LLVMModuleCreateWithNameInContext("Cobain", context)
     }
 
-    func generate(_ trees: [AST]) throws -> Int32 {
+    public func generate(_ trees: [AST]) throws -> Int32 {
         let values = try trees.map(getValue)
         let error = UnsafeMutablePointer<UnsafeMutablePointer<Int8>?>.allocate(capacity: 1)
         LLVMVerifyModule(module, LLVMAbortProcessAction, error)
@@ -61,19 +65,26 @@ final public class LLVMCodeGenerator {
             return LLVMBuildCall(builder, f, try args.map(getValue).unsafeMutablePointer, UInt32(args.count), "calltmp")
         case let .prototype(prototype):
             let doubles = prototype.args.map { _ in LLVMDoubleTypeInContext(context) }
-            let f = LLVMFunctionType(LLVMDoubleTypeInContext(context), doubles.unsafeMutablePointer, UInt32(prototype.args.count), 0)
+            let fType = LLVMFunctionType(LLVMDoubleTypeInContext(context), doubles.unsafeMutablePointer, UInt32(prototype.args.count), 0)
+            guard let f = LLVMAddFunction(module, prototype.name, fType) else {
+                throw LLVMCodeGeneratorError.uninitializedFunction(prototype.name)
+            }
             let params = UnsafeMutablePointer<LLVMValueRef?>.allocate(capacity: prototype.args.count)
             LLVMGetParams(f, params)
+            namedValues = [:]
             UnsafeBufferPointer(start: params, count: prototype.args.count).enumerated().forEach { index, arg in
                 LLVMSetValueName(arg, prototype.args[index])
+                namedValues[prototype.args[index]] = arg
             }
-            return LLVMAddFunction(module, prototype.name, f)
+            return f
         case let .motif(proto, body):
             let f = try LLVMGetNamedFunction(module, proto.name) ?? (try getValue(for: .prototype(proto)))
             // TODO: Check if the function was already defined
-            let bb = LLVMAppendBasicBlock(f, "entry")
             let instr = try body.map(getValue)
-            LLVMPositionBuilder(builder, bb, instr)
+            let bb = LLVMAppendBasicBlockInContext(context, f, "entry")
+            LLVMPositionBuilderAtEnd(builder, bb)
+            LLVMBuildRet(builder, instr)
+            LLVMVerifyFunction(f, LLVMAbortProcessAction)
 
             return f
         }
@@ -86,6 +97,9 @@ final public class LLVMCodeGenerator {
 }
 
 public enum LLVMCodeGeneratorError: Error {
+    case uninitializedContext
+    case uninitializedBuilder
+    case uninitializedFunction(String)
     case unknownVariable(String)
     case unknownOperator(Character)
     case unknownFunction(String)
@@ -101,6 +115,12 @@ public enum LLVMCodeGeneratorError: Error {
             return "Unknown function \(name)"
         case let .incorrectNumberOfArguments(expected, got):
             return "Incorrect number of arguments passed. Expected \(expected), got \(got)"
+        case .uninitializedContext:
+            return "Could not initialize context"
+        case .uninitializedBuilder:
+            return "Could not initialize builder"
+        case let .uninitializedFunction(name):
+            return "Could not add LLVM function \(name)"
         }
     }
 }
