@@ -4,8 +4,9 @@ final public class LLVMCodeGenerator {
     var context: LLVMContextRef
     var builder: LLVMBuilderRef
     var module: LLVMModuleRef
+    var stdlib: StdLib
 
-    // Used for function arguments inside fucntion body
+    // Used for function arguments inside function body
     var namedValues = [String: LLVMValueRef]()
 
     public init() throws {
@@ -18,6 +19,8 @@ final public class LLVMCodeGenerator {
         self.context = context
         self.builder = builder
         self.module = LLVMModuleCreateWithNameInContext("Cobain", context)
+
+        self.stdlib = StdLib(in: module, with: context, builder: builder)
     }
 
     public func generate(_ trees: [AST]) throws -> Int32 {
@@ -31,8 +34,8 @@ final public class LLVMCodeGenerator {
         return LLVMWriteBitcodeToFile(module, "result.bc")
     }
 
-    func getValue(for tree: AST) throws -> LLVMValueRef {
-        switch tree {
+    func getValue(for node: AST) throws -> LLVMValueRef {
+        switch node {
         case let .number(number):
             return LLVMConstReal(LLVMDoubleTypeInContext(context), number)
         case let .variable(name):
@@ -63,10 +66,10 @@ final public class LLVMCodeGenerator {
             guard args.count == expectedArgsCount else {
                 throw LLVMCodeGeneratorError.incorrectNumberOfArguments(expected: expectedArgsCount, got: args.count)
             }
-            return LLVMBuildCall(builder, f, try args.map(getValue).unsafeMutablePointer, UInt32(args.count), "calltmp")
+            return LLVMBuildCall(builder, f, try args.map(getValue).unsafeMutablePointer, UInt32(args.count), "")
         case let .prototype(prototype):
             let doubles = prototype.args.map { _ in LLVMDoubleTypeInContext(context) }
-            let fType = LLVMFunctionType(LLVMDoubleTypeInContext(context), doubles.unsafeMutablePointer, UInt32(prototype.args.count), 0)
+            let fType = LLVMFunctionType(prototype.name == "main" ? LLVMIntTypeInContext(context, 32) : LLVMDoubleTypeInContext(context), doubles.unsafeMutablePointer, UInt32(prototype.args.count), 0)
             guard let f = LLVMAddFunction(module, prototype.name, fType) else {
                 throw LLVMCodeGeneratorError.uninitializedFunction(prototype.name)
             }
@@ -82,11 +85,14 @@ final public class LLVMCodeGenerator {
         case let .motif(proto, body):
             let f = try LLVMGetNamedFunction(module, proto.name) ?? (try getValue(for: .prototype(proto)))
             // TODO: Check if the function was already defined
-
             let bb = LLVMAppendBasicBlockInContext(context, f, "entry")
             LLVMPositionBuilderAtEnd(builder, bb)
             let instr = try body.map(getValue)
-            LLVMBuildRet(builder, instr)
+            if proto.name == "main" {
+                LLVMBuildRet(builder, LLVMConstInt(LLVMIntTypeInContext(context, 32), 0, 1))
+            } else {
+                LLVMBuildRet(builder, instr)
+            }
             LLVMVerifyFunction(f, LLVMAbortProcessAction)
 
             return f

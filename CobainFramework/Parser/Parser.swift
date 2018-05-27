@@ -15,7 +15,7 @@ public struct Parser {
                 (try parseFunctionDefinition()).map { syntaxTree.append($0) }
             case .extern?:
                 (try parseExtern()).map { syntaxTree.append($0) }
-            case .unknown(let char)? where char == "," || char == "\n":
+            case .unknown(let char)? where [",", "\n"].contains(char):
                 break
             default:
                 (try parseTopLevelExpression()).map { syntaxTree.append($0) }

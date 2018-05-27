@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF12163320A8BC1000C0974A /* StdLib.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF12163220A8BC1000C0974A /* StdLib.swift */; };
 		FF5D98E22072F00B00C48347 /* ParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5D98E12072F00B00C48347 /* ParserTests.swift */; };
 		FF5D98EC2072F25000C48347 /* CobainFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = FF5D98EA2072F25000C48347 /* CobainFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FF5D98F02072F25B00C48347 /* AST.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5D98CA2072E3B800C48347 /* AST.swift */; };
@@ -22,6 +23,7 @@
 		FF7C35E62076B1C60096D6DC /* LLVMCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7C35E52076B1C60096D6DC /* LLVMCodeGenerator.swift */; };
 		FF7C35E8207797BB0096D6DC /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7C35E7207797BB0096D6DC /* ArrayExtensions.swift */; };
 		FFB231F41E66256A00BCF030 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB231F31E66256A00BCF030 /* main.swift */; };
+		FFD05FB820B1A3F600CA778F /* CobainFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF5D98E82072F25000C48347 /* CobainFramework.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		FF12163220A8BC1000C0974A /* StdLib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StdLib.swift; sourceTree = "<group>"; };
 		FF5D98CA2072E3B800C48347 /* AST.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AST.swift; sourceTree = "<group>"; };
 		FF5D98CB2072E3B900C48347 /* OperatorPrecedence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperatorPrecedence.swift; sourceTree = "<group>"; };
 		FF5D98CC2072E3B900C48347 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
@@ -98,12 +101,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFD05FB820B1A3F600CA778F /* CobainFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FF12163120A8BBE700C0974A /* Stdlib */ = {
+			isa = PBXGroup;
+			children = (
+				FF12163220A8BC1000C0974A /* StdLib.swift */,
+			);
+			path = Stdlib;
+			sourceTree = "<group>";
+		};
 		FF5D98D92072EFD500C48347 /* CobainTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +139,7 @@
 				FF8609751F6DDB0B00A38D90 /* Lexer */,
 				FF8609801F6DDB2900A38D90 /* Parser */,
 				FF7C35E42076B18D0096D6DC /* Codegen */,
+				FF12163120A8BBE700C0974A /* Stdlib */,
 				FF8609721F6DDB0B00A38D90 /* Extensions */,
 				FF5D98EA2072F25000C48347 /* CobainFramework.h */,
 				FF5D98EB2072F25000C48347 /* Info.plist */,
@@ -364,6 +377,7 @@
 				FF7C35E62076B1C60096D6DC /* LLVMCodeGenerator.swift in Sources */,
 				FF5D98F42072F25B00C48347 /* CharacterExtensions.swift in Sources */,
 				FF5D98F12072F25B00C48347 /* OperatorPrecedence.swift in Sources */,
+				FF12163320A8BC1000C0974A /* StdLib.swift in Sources */,
 				FF5D98F22072F25B00C48347 /* Parser.swift in Sources */,
 				FF7C35E8207797BB0096D6DC /* ArrayExtensions.swift in Sources */,
 				FF5D98F72072F25B00C48347 /* LexerError.swift in Sources */,
@@ -669,9 +683,13 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = "";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path @executable_path/CobainFramework.framework/Versions/Current/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_FORCE_DYNAMIC_LINK_STDLIB = YES;
+				SWIFT_FORCE_STATIC_LINK_STDLIB = NO;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
 			};
@@ -684,9 +702,13 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = "";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path @executable_path/CobainFramework.framework/Versions/Current/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_FORCE_DYNAMIC_LINK_STDLIB = YES;
+				SWIFT_FORCE_STATIC_LINK_STDLIB = NO;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
 			};

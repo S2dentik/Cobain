@@ -2,14 +2,14 @@ public struct Lexer {
 
     let stream: Stream<String>
 
+    public init(stream: Stream<String>) {
+        self.stream = stream
+    }
+
     public var tokens: [Token] {
         var t = [Token]()
         while let token = (try? getToken()).flatMap({ $0 }) { t.append(token) }
         return t
-    }
-
-    public init(stream: Stream<String>) {
-        self.stream = stream
     }
 
     func getToken() throws -> Token? {
