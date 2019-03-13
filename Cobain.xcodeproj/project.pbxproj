@@ -311,12 +311,12 @@
 					};
 					FF5D98E72072F25000C48347 = {
 						CreatedOnToolsVersion = 9.3;
-						DevelopmentTeam = QE33WF5A23;
+						DevelopmentTeam = WGBYF8F25V;
 						ProvisioningStyle = Automatic;
 					};
 					FFB231EF1E66256A00BCF030 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = QE33WF5A23;
+						DevelopmentTeam = WGBYF8F25V;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
@@ -470,7 +470,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = QE33WF5A23;
+				DEVELOPMENT_TEAM = WGBYF8F25V;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -528,7 +528,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = QE33WF5A23;
+				DEVELOPMENT_TEAM = WGBYF8F25V;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -682,7 +682,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = WGBYF8F25V;
 				FRAMEWORK_SEARCH_PATHS = "";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path @executable_path/CobainFramework.framework/Versions/Current/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
@@ -701,7 +701,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = WGBYF8F25V;
 				FRAMEWORK_SEARCH_PATHS = "";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path @executable_path/CobainFramework.framework/Versions/Current/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;

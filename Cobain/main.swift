@@ -1,10 +1,10 @@
 import CobainFramework
 
 var stream = Stream("""
-motif incr(a) {
-    a + 1
+motif fact(a) {
+    is a < 1 ? a : a * fact(a - 1)
 }
-print(incr(2))
+print(fact(5))
 """)
 
 if CommandLine.arguments.count > 1 {
@@ -15,15 +15,20 @@ if CommandLine.arguments.count > 1 {
 }
 
 let tokens = Lexer(stream: stream).tokens
-print(tokens.map { $0.description })
+if CommandLine.arguments.contains("-emit-tokens") {
+    print(tokens.map { $0.description })
+    exit(0)
+}
 do {
     let ast = try Parser(tokens: tokens).parse()
-    print(ast.map { $0.description() }.joined(separator: "\n"))
+    if CommandLine.arguments.contains("-emit-ast") {
+        print(ast.map { $0.description() }.joined(separator: "\n"))
+        exit(0)
+    }
     let generator = try LLVMCodeGenerator()
-    try generator.generate(ast)
+    try generator.generate(ast, dump: CommandLine.arguments.contains("-emit-llvm"))
 } catch let error as ParserError {
     print(error.description)
 } catch let error {
     print(error.localizedDescription)
 }
-print(tokens.map { $0.description })

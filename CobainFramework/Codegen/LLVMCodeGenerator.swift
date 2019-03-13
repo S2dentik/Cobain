@@ -8,6 +8,9 @@ final public class LLVMCodeGenerator {
 
     // Used for function arguments inside function body
     var namedValues = [String: LLVMValueRef]()
+    var currentFunction: LLVMValueRef!
+    var currentBB: LLVMBasicBlockRef!
+    var shouldReturn = true
 
     public init() throws {
         guard let context = LLVMContextCreate() else {
@@ -23,14 +26,13 @@ final public class LLVMCodeGenerator {
         self.stdlib = StdLib(in: module, with: context, builder: builder)
     }
 
-    public func generate(_ trees: [AST]) throws -> Int32 {
+    public func generate(_ trees: [AST], dump: Bool = false) throws -> Int32 {
         let values = try trees.map(getValue)
         let error = UnsafeMutablePointer<UnsafeMutablePointer<Int8>?>.allocate(capacity: 1)
-        LLVMDumpModule(module)
-        LLVMVerifyModule(module, LLVMAbortProcessAction, error)
-        if let error = error.pointee {
-            print(error)
+        if dump {
+            LLVMDumpModule(module)
         }
+        LLVMVerifyModule(module, LLVMAbortProcessAction, error)
         return LLVMWriteBitcodeToFile(module, "result.bc")
     }
 
@@ -53,8 +55,7 @@ final public class LLVMCodeGenerator {
             case "/":
                 return LLVMBuildFDiv(builder, l, r, "divtmp")
             case "<":
-                let bool = LLVMBuildFCmp(builder, LLVMRealULT, l, r, "cmptmp")
-                return LLVMBuildUIToFP(builder, bool, LLVMDoubleTypeInContext(context), "booltmp")
+                return LLVMBuildFCmp(builder, LLVMRealULT, l, r, "cmptmp")
             default:
                 throw LLVMCodeGeneratorError.unknownOperator(op)
             }
@@ -84,19 +85,41 @@ final public class LLVMCodeGenerator {
             return f
         case let .motif(proto, body):
             let f = try LLVMGetNamedFunction(module, proto.name) ?? (try getValue(for: .prototype(proto)))
+            currentFunction = f
             // TODO: Check if the function was already defined
             let bb = LLVMAppendBasicBlockInContext(context, f, "entry")
+            currentBB = bb
             LLVMPositionBuilderAtEnd(builder, bb)
             let instr = try body.map(getValue)
+            LLVMPositionBuilderAtEnd(builder, bb)
             if proto.name == "main" {
                 LLVMBuildRet(builder, LLVMConstInt(LLVMIntTypeInContext(context, 32), 0, 1))
-            } else {
+            } else if shouldReturn {
                 LLVMBuildRet(builder, instr)
             }
             LLVMVerifyFunction(f, LLVMAbortProcessAction)
 
+            currentFunction = nil
+            currentBB = nil
+            shouldReturn = true
+
             return f
+        case let .cond(cond, i, e):
+            let bbIf = LLVMAppendBasicBlockInContext(context, currentFunction, "ifcond")
+            LLVMPositionBuilderAtEnd(builder, bbIf)
+            LLVMBuildRet(builder, try getValue(for: i))
+
+            let bbElse = LLVMAppendBasicBlockInContext(context, currentFunction, "elsecond")
+            LLVMPositionBuilderAtEnd(builder, bbElse)
+            LLVMBuildRet(builder, try getValue(for: e))
+
+            shouldReturn = false
+
+            LLVMPositionBuilderAtEnd(builder, currentBB)
+
+            return LLVMBuildCondBr(builder, try getValue(for: cond), bbIf, bbElse)
         }
+
     }
 
     deinit {

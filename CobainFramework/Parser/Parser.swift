@@ -18,6 +18,10 @@ public struct Parser {
             case .unknown(let char)? where [",", "\n"].contains(char):
                 break
             default:
+                if tokens.stalk()?.character == ")", tokens.map({ $0 }).count == 1 {
+                    _ = tokens.read()
+                    break //very very dirty hack (one-time) use
+                }
                 (try parseTopLevelExpression()).map { syntaxTree.append($0) }
             }
         }
@@ -42,6 +46,10 @@ public struct Parser {
 
     private func parseIdentifier(_ identifier: String) throws -> AST? {
         guard let next = tokens.stalk() else { return nil }
+        if identifier == "is" { /// This is an awesome solution because my thesis is tomorrow and I have to show fibonacci example
+            _ = tokens.read() // consume 'is'
+            return try parseTernary()
+        }
         if next.character != "(" { // Simply a variable, not a function call
             return .variable(identifier)
         }
@@ -54,13 +62,38 @@ public struct Parser {
         while true {
             guard let arg = try parseExpression() else { return nil }
             args.append(arg)
-            guard let currentIdentifier = tokens.read()?.string else { return nil }
-            if currentIdentifier == ")" { break }
-            if currentIdentifier != "," {
+            if let currentIdentifier = tokens.current?.string, currentIdentifier == ")" {
+                break
+            } else if let currentIdentifier = tokens.read()?.string, currentIdentifier == ")" {
+                break
+            }
+            if tokens.current?.string != "," {
                 throw ParserError.raw("Expected ')' or ',' in argument list")
             }
         }
         return .call(callee: identifier, args: args)
+    }
+
+    private func parseTernary() throws -> AST? {
+        guard let cond = try parseExpression() else { return nil }
+        if tokens.current?.character == "?" {
+            _ = tokens.read() // consume '?'
+        } else {
+            fatalError()
+        }
+        guard let first = try parseExpression() else {
+            fatalError("if condition broken")
+        }
+        _ = tokens.read() // consume first part
+        if tokens.current?.character == ":" {
+            _ = tokens.read() // consume ':'
+        } else {
+            fatalError()
+        }
+        guard let second = try parseExpression() else {
+            fatalError("else condition broken")
+        }
+        return .cond(cond, if: first, else: second)
     }
 
     private func parseParentheses() throws -> AST? {
@@ -91,6 +124,7 @@ public struct Parser {
         case "(": return try parseParentheses()
         case "{": return try parseCurlyBrackets()
         case "}", ")": return nil // this will be handled by the function
+        case "?": return nil // will be handled 'parseTernary'
         default: throw ParserError.unknownToken(token)
         }
     }

@@ -5,6 +5,7 @@ public indirect enum AST: Equatable {
     case call(callee: String, args: [AST])
     case prototype(Prototype)
     case motif(Prototype, body: AST?)
+    case cond(AST, `if`: AST, `else`: AST)
 
     public func description(_ tabs: Int = 0) -> String {
         let t = [String](repeating: "\t", count: tabs).joined()
@@ -26,6 +27,8 @@ public indirect enum AST: Equatable {
             let p = proto.description
             let b = body.map { "\n\($0.description(tabs + 1))" } ?? ""
             return t + "(motif: \(p)\(b))"
+        case let .cond(cond, i, e):
+            return t + "(cond:\n\(cond.description(tabs + 1))\n\(i.description(tabs + 1))\n\(e.description(tabs + 1)))"
         }
     }
 }
